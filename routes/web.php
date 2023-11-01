@@ -15,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/linkstorage', function () {
+    Illuminate\Support\Facades\Artisan::call('storage:link');
+});
+
 Route::get('/', function () {
     if (auth()->check() && auth()->user()->user_type === "Admin") {
         return redirect()->route('admin');
-    }else if(auth()->check()){
+    } else if (auth()->check()) {
         return redirect()->route('step-two');
     }
 
@@ -29,7 +33,7 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
-  
+
 
     Route::get('/admin', function () {
         return view('admin');
@@ -47,11 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::post('upload-epmloyeeagreement', [ApplicationController::class, 'epmloyeeagreement'])->name('upload-epmloyeeagreement');
     Route::post('/stepfour', [ApplicationController::class, 'store_step_four'])->name('stepfour');
     Route::get('/stepfour', [ApplicationController::class, 'show_step_four'])->name('stepfour');
-  Route::get('/step-two', function () {
+    Route::get('/step-two', function () {
         return view('steptwo');
     })->name('steptwo');
-
-
 });
 
 require __DIR__ . '/auth.php';

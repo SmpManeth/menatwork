@@ -7,14 +7,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-
-
+    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -22,16 +21,13 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
 
-
-
         <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 
 </html>
