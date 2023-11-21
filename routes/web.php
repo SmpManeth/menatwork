@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     if (auth()->check() && auth()->user()->user_type === "Admin") {
         return redirect()->route('admin');
-    }else if(auth()->check()){
+    } else if (auth()->check()) {
         return redirect()->route('step-two');
     }
 
-    
+
 
     return view('dashboard');
 })->name('dashboard');
@@ -34,9 +34,9 @@ Route::get('/success', [StripeController::class, 'success'])->name('success');
 
 
 Route::middleware('auth')->group(function () {
-  
 
-  
+
+
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin', function () {
             return view('admin');
@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin', [ApplicationController::class, 'show_users'])->name('admin');
     });
 
-   
+
     Route::get('/step-three', [ApplicationController::class, 'show_step_three'])->name('stepthree');
     Route::get('/admin/users/{id}/edit', [ApplicationController::class, 'edit_user'])->name('admin_edit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -60,14 +60,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/stepfive', [ApplicationController::class, 'show_stepfive'])->name('stepfive');
     Route::post('/stepfive', [ApplicationController::class, 'store_step_five'])->name('stepfive');
 
-  Route::get('/step-two', function () {
+    Route::get('/step-two', function () {
         return view('steptwo');
     })->name('steptwo');
     Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
-    
-
-
-
 });
 
 require __DIR__ . '/auth.php';

@@ -197,10 +197,10 @@
                                 <div class="flex items-center">
                                     @if ($user->status === 'selected')
                                     <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>Completed
-                                    @elseif ($user->status === 'interview')
+                                    @elseif ($user->status === 'Interview')
                                     <div class="h-2.5 w-2.5 rounded-full bg-yellow-500 mr-2"></div> Interview
                                     @elseif ($user->status === 'process')
-                                    <div class="h-2.5 w-2.5 rounded-full bg-yellow-500 mr-2"></div> Process
+                                    <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div> Process
                                     @elseif ($user->status === 'reject')
                                     <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Rejected
                                     <!-- Handle other status values if needed -->
@@ -223,22 +223,25 @@
             <img class="mx-auto w-40 sm:w-56 md:w-64" src="{{ asset('storage/images/footertwo.png') }}" alt="Footer Two Image">
 
             <p class="text-center pt-2 sm:pt-3 md:pt-4 text-sm sm:text-base md:text-lg">
-                At Men At Work, our unwavering commitment is to connect the vibrant talent of Sri Lanka with captivating career openings in Romania's flourishing restaurant, hotel, and delivery service sectors. We proudly operate as a registered company in Romania bearing the business registration number J40/2550/2023. Our expertise spans both Romania and Sri Lanka, where we specialize in facilitating foreign employment opportunities.
+                At Men At Work, our unwavering commitment is to connect the vibrant talent of Sri Lanka with captivating career openings in Romania's flourishing
+                restaurant, hotel, and delivery service sectors. We proudly operate as , a registered company in Romania bearing the business registration number
+                J40/2550/2023. Our expertise spans both Romania and Sri Lanka, where we specialize in facilitating foreign employment opportunities.
+
             </p>
 
             <div class="flex  mx-auto w-3/5 flex-col items-center justify-center mt-4 sm:flex-row sm:justify-between sm:mt-8 md:mt-12" id="navbar-user">
                 <ul class=" mx-auto flex flex-col font-medium p-2 sm:p-0 mt-2 sm:mt-0 border-gray-100 rounded-lg md:flex-row md:space-x-4 md:border-0">
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">Home</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">About Us</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">About Us</a>
                     </li>
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">Contact Us</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">Contact Us</a>
                     </li>
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">Register Now</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">Register Now</a>
                     </li>
                 </ul>
 
@@ -269,6 +272,6 @@
                 </div>
             </div>
         </div>
-        <img src="{{ asset('storage/images/footer.png') }}" alt="">
+        <img src="{{ asset('storage/images/footer.png') }}" style="height: 10px; width:100%" alt="" class="mt-1">
     </div>
 </x-app-layout>

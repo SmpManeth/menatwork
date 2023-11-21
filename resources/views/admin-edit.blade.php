@@ -39,18 +39,20 @@
                 <div class="sm:col-span-6">
                     <label for="date" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Date</label>
                     <div class="mt-1">
-                        <input id="date" name="date" type="date" value="  {{$user->date}}" autocomplete="date" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input id="date" name="date" type="date" value="{{ \Carbon\Carbon::parse($user->date)->format('Y-m-d') }}" autocomplete="date" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <x-input-error :messages="$errors->get('date')" class="mt-2" />
                     </div>
                 </div>
 
+
                 <div class="sm:col-span-6">
                     <label for="time" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Time</label>
                     <div class="mt-1">
-                        <input id="time" name="time" type="time" value="  {{$user->time}}" autocomplete="time" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input id="time" name="time" type="time" value="{{ \Carbon\Carbon::parse($user->time)->format('H:i') }}" autocomplete="time" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <x-input-error :messages="$errors->get('time')" class="mt-2" />
                     </div>
                 </div>
+
 
 
 
@@ -59,44 +61,41 @@
                     <div class="mt-1">
                         <input id="employee_agreement_user" name="employee_agreement_user" type="file" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <x-input-error :messages="$errors->get('employee_agreement_user')" class="mt-2" />
+                        <label for="offerletter" class="text-xs text-gray-900">Old File -{{$user->employee_agreement_user}}</label>
                     </div>
                 </div>
-
                 <div class="sm:col-span-6">
-                    <label for="termsandcondition_user" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Upload Terms and Conditions</label>
-                    <div class="mt-1">
-                        <input id="termsandcondition_user" name="termsandcondition_user" type="file" autocomplete="termsandcondition_user" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        <x-input-error :messages="$errors->get('termsandcondition_user')" class="mt-2" />
-                    </div>
-                </div>
-
-                <div class="sm:col-span-6">
-                    <label for="workpormit" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Upload workpormit</label>
+                    <label for="workpormit" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Upload  Work Permit</label>
                     <div class="mt-1">
                         <input id="workpormit" name="workpormit" type="file" autocomplete="workpormit" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <x-input-error :messages="$errors->get('workpormit')" class="mt-2" />
+                        <label for="offerletter" class="text-xs text-gray-900">Old File - {{$user->workpormit}}</label>
                     </div>
                 </div>
-
                 <div class="sm:col-span-6">
-                    <label for="offerletter" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Upload offerletter</label>
+                    <label for="offerletter" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Upload Offer Letter</label>
                     <div class="mt-1">
                         <input id="offerletter" name="offerletter" type="file" autocomplete="offerletter" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <x-input-error :messages="$errors->get('offerletter')" class="mt-2" />
+                        <label for="offerletter" class="text-xs text-gray-900">Old File -{{$user->offerletter}}</label>
+
                     </div>
                 </div>
+
+                <input type="text" hidden name="offerletter_old" value="{{$user->offerletter}}">
+                <input type="text" hidden name="workpormit_old" value="{{$user->workpormit}}">
+                <input type="text" hidden name="employee_agreement_user_old" value="{{$user->employee_agreement_user}}">
 
                 <div class="sm:col-span-6">
                     <label for="status" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Change Status</label>
                     <div class="mt-1">
-                        <select name="status" id="">
-                            <Option value="selected">Completed</Option>
-                            <Option value="interview">Interview</Option>
-                            <Option value="reject">Rejected</Option>
+                        <select name="status" id="" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <option value="process" @if($user->status == 'process') selected @endif>Processing</option>
+                            <option value="selected" @if($user->status == 'selected') selected @endif>Selected (Completed)</option>
+                            <option value="Interview" @if($user->status == 'Interview') selected @endif>Interview Scheduled</option>
                         </select>
                     </div>
                 </div>
-
             </div>
 
 
@@ -117,22 +116,25 @@
             <img class="mx-auto w-40 sm:w-56 md:w-64" src="{{ asset('storage/images/footertwo.png') }}" alt="Footer Two Image">
 
             <p class="text-center pt-2 sm:pt-3 md:pt-4 text-sm sm:text-base md:text-lg">
-                At Men At Work, our unwavering commitment is to connect the vibrant talent of Sri Lanka with captivating career openings in Romania's flourishing restaurant, hotel, and delivery service sectors. We proudly operate as a registered company in Romania bearing the business registration number J40/2550/2023. Our expertise spans both Romania and Sri Lanka, where we specialize in facilitating foreign employment opportunities.
+                At Men At Work, our unwavering commitment is to connect the vibrant talent of Sri Lanka with captivating career openings in Romania's flourishing
+                restaurant, hotel, and delivery service sectors. We proudly operate as , a registered company in Romania bearing the business registration number
+                J40/2550/2023. Our expertise spans both Romania and Sri Lanka, where we specialize in facilitating foreign employment opportunities.
+
             </p>
 
             <div class="flex  mx-auto w-3/5 flex-col items-center justify-center mt-4 sm:flex-row sm:justify-between sm:mt-8 md:mt-12" id="navbar-user">
                 <ul class=" mx-auto flex flex-col font-medium p-2 sm:p-0 mt-2 sm:mt-0 border-gray-100 rounded-lg md:flex-row md:space-x-4 md:border-0">
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">Home</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">About Us</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">About Us</a>
                     </li>
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">Contact Us</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">Contact Us</a>
                     </li>
                     <li>
-                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 text-white rounded md:bg-transparent -700 md:p-0" aria-current="page">Register Now</a>
+                        <a href="https://www.menatwork.com.ro/" class="text-black block py-2 pl-2 pr-3 rounded md:bg-transparent -700 md:p-0" aria-current="page">Register Now</a>
                     </li>
                 </ul>
 
@@ -140,7 +142,7 @@
             <div class="sm:w-2/5 md:w-1/5 mx-auto">
                 <div class="grid grid-cols-5 gap-1 pt-4 sm:pt-8">
                     <div>
-                        <img src="{{ ('storage/images/facebook_mono.png') }}" alt="Facebook">
+                        <img src="{{ asset('storage/images/facebook_mono.png') }}" alt="Facebook">
                     </div>
                     <div>
                         <img src="{{ asset('storage/images/instagram_mono.png') }}" alt="Instagram">
@@ -163,6 +165,6 @@
                 </div>
             </div>
         </div>
-        <img src="{{ asset('storage/images/footer.png') }}" alt="">
+        <img src="{{ asset('storage/images/footer.png') }}" style="height: 10px; width:100%" alt="" class="mt-1">
     </div>
 </x-app-layout>

@@ -30,23 +30,35 @@ class ApplicationController extends Controller
     public function update_user(Request $request)
     {
         $request->validate([
-            'employee_agreement_user' => 'required|max:2048', // Max file size of 2MB
-            'offerletter' => 'required|max:2048', // Max file size of 2MB
-            'workpormit' => 'required|max:2048', // Max file size of 2MB
-            'termsandcondition_user' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
+            'employee_agreement_user' => 'max:2048', // Max file size of 2MB
+            'offerletter' => 'max:2048', // Max file size of 2MB
+            'workpormit' => 'max:2048', // Max file size of 2MB
         ]);
 
         // Store the images
-        $employee_agreement_user = $request->file('employee_agreement_user')->store('public/upload_images');
-        $workpormit = $request->file('workpormit')->store('public/upload_images');
-        $offerletter = $request->file('offerletter')->store('public/upload_images');
-        $termsandcondition_user = $request->file('termsandcondition_user')->store('public/upload_images');
+        // Store the images only if they are provided
+        if ($request->hasFile('employee_agreement_user')) {
+            $employee_agreement_user = $request->file('employee_agreement_user')->store('public/upload_images');
+        } else {
+            $employee_agreement_user = $request->input('employee_agreement_user_old');
+        }
+
+        if ($request->hasFile('workpormit')) {
+            $workpormit = $request->file('workpormit')->store('public/upload_images');
+        } else {
+            $workpormit =  $request->input('workpormit_old');
+        }
+
+        if ($request->hasFile('offerletter')) {
+            $offerletter = $request->file('offerletter')->store('public/upload_images');
+        } else {
+            $offerletter =  $request->input('offerletter_old');
+        }
 
         $user = User::find($request->id);
         $user->update([
             'employee_agreement_user' => $employee_agreement_user,
             'workpormit' => $workpormit,
-            'termsandcondition_user' => $termsandcondition_user,
             'status' => $request->status,
             'date' => $request->date,
             'time' => $request->time,
@@ -150,15 +162,15 @@ class ApplicationController extends Controller
     public function store_step_four(Request $request)
     {
         $dataToPass = request()->getQueryString();
-          parse_str($dataToPass, $request);
+        parse_str($dataToPass, $request);
 
 
         $user = Auth::user();
         // Update the user's fields
-         $user->employee_agreement = $request['employee_agreement'];
+        $user->employee_agreement = $request['employee_agreement'];
         // $user->tc = $request['termsconditions'];
-      $user->save();
-      return redirect()->route('stepfive')->with(['user' => $user]);
+        $user->save();
+        return redirect()->route('stepfive')->with(['user' => $user]);
 
         // $request->validate([
         //     'sc' => 'required', // Max file size of 2MB
@@ -175,7 +187,7 @@ class ApplicationController extends Controller
         //     'sc' => $request->sc,
         // ]);
 
-       // return redirect()->away('https://www.menatwork.com.ro');
+        // return redirect()->away('https://www.menatwork.com.ro');
 
         // return view('stepfour')->with('user', $user);
     }
@@ -186,21 +198,21 @@ class ApplicationController extends Controller
         // Update the user's fields
         //$user->employee_agreement = $request['employee_agreement'];
         // $user->tc = $request['termsconditions'];
-     // $user->save();
-     // return redirect()->route('stepfive')->with(['user' => $user]);
+        // $user->save();
+        // return redirect()->route('stepfive')->with(['user' => $user]);
 
-         $request->validate([
-             'visa_proof' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
-         ]);
+        $request->validate([
+            'visa_proof' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
+        ]);
 
-         // Store the images
-         $visa_proof = $request->file('visa_proof')->store('public/upload_images');
+        // Store the images
+        $visa_proof = $request->file('visa_proof')->store('public/upload_images');
 
 
-         $user = $request->user(); // Get the authenticated user
-         $user->update([
-             'visa_proof' => $visa_proof,
-         ]);
+        $user = $request->user(); // Get the authenticated user
+        $user->update([
+            'visa_proof' => $visa_proof,
+        ]);
 
         return redirect()->away('https://www.menatwork.com.ro');
 
