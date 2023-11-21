@@ -20,7 +20,7 @@
                 credit/debit card. Once you've completed the payment, you will be redirected to the next step to upload necessary documents.
             </p>
 
-            <form action="{{ route('register_new') }}" method="POST">
+            <form action="{{ route('session') }}" method="POST">
                 @csrf
                 <div class="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 gap-4 sm:grid-cols-6 gap-x-2 gap-y-4 sm:gap-x-4 sm:gap-y-6">
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\StripeController;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-
+use Stripe\Checkout\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -27,22 +28,18 @@ class RegisteredUserController extends Controller
 
     
 
-    public function new_register(Request $request)
+    public static function new_register()
     {
-        
-        $request->validate([
-            'first_name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'whatsapp_number' => ['required', 'string', 'min:3', 'max:255'],
-        ]);
+        $dataToPass = request()->getQueryString();
+        parse_str($dataToPass, $request);
 
         // Generate a random password
-        $randomPassword = $request->first_name;
+         $randomPassword = $request['name'];
 
         $user = User::create([
-            'name' => $request->first_name,
-            'email' => $request->email,
-            'whatsapp_number' => $request->whatsapp_number,
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'whatsapp_number' => $request['whatsapp_number'],
             'password' => Hash::make($randomPassword), // Use the generated password
         ]);
 

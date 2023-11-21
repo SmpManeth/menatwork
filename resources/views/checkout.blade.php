@@ -10,106 +10,74 @@
         <div class="py-4 sm:py-6 md:py-8 border-round">
             <div class="bg-[#FFCC01] inline-block flex items-center rounded-2xl p-2 sm:p-4 md:p-6 mt-4 sm:mt-8">
                 <img src="{{ asset('storage/images/information-button.png') }}" class="w-8 sm:w-10 ps-2" alt="information button">
-                <span class="ps-3 sm:ps-5 font-bold text-sm sm:text-xl">STEP 03 - Check the Status of Your Application, Sign Employment Agreement and T&C</span>
+                <span class="ps-3 sm:ps-5 font-bold text-sm sm:text-xl">STEP 04 - Get the Work Permit and Apply for the Visa</span>
             </div>
 
             <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
-                You can check the status of your application below. Once your application confirmed, we
-                will provide a date and time for an online interview
-                via WhatsApp video call.
+                Once your work permit issued, we will upload the proof pf the work permit here. Stay in touch.
             </p>
 
-            <div class="grid gap-4 grid-cols-2">
-                <div>
-                    <p>Your Application Status</p>
+
+            <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
+                Proof of Your Work Permit
+            </p>
+
+            <iframe class="m-3 p-3" src="{{ Storage::url($user->workpormit) }}" width="100%" height="500px"></iframe>
+            <div class="w-2/5 mx-auto">
+                <a href="{{ Storage::url($user->workpormit) }}" download>
                     <div class="bg-[black] h-12 inline-block flex items-center">
-                        <p class="text-[#FFCC01] mx-auto w-fit  ">{{$user->status}}</p>
+                        <p class="text-[#FFCC01] mx-auto w-fit  ">Download Your Work Permit</p>
                     </div>
+                </a>
+            </div>
+
+
+            <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
+                Apply Your Visa Online
+            </p>
+            <div>
+
+                <div class="bg-[black] h-12 inline-block flex items-center">
+                    <p class="text-[#FFCC01] mx-auto w-fit  ">https://evisa.mae.ro/Home?lang=en-US</p>
                 </div>
-
-
-                <div>
-                    <p>Date & Time for Your Interview</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-
-                            <div class="bg-[black] h-12 inline-block flex items-center">
-                                <p class="text-[#FFCC01] mx-auto w-fit  ">{{$user->date}}</p>
-                            </div>
-                        </div>
-                        <div>
-
-                            <div class="bg-[black] h-12 inline-block flex items-center">
-                                <p class="text-[#FFCC01] mx-auto w-fit  ">{{$user->time}}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
             <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
-                If your job offer confirmed, please download the Employment Agreement and Terms & Conditions Document, sign them, scan and reupload here.
+                Upload Your Visa Application Proof and Add SC Number for the Registration
             </p>
 
-            <div class="grid gap-4 grid-cols-2">
-                <div>
-                    <a href="{{ Storage::url($user->employee_agreement_user) }}" download>
-                        <div class="bg-[black] h-12 inline-block flex items-center">
-                            <p class="text-[#FFCC01] mx-auto w-fit  ">Download Employment Agreement</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="{{ Storage::url($user->termsandcondition_user) }}" download>
-                        <div class="bg-[black] h-12 inline-block flex items-center">
-                            <p class="text-[#FFCC01] mx-auto w-fit  ">Download Terms & Conditions</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <form action="{{ route('session_two') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('stepfour') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="grid gap-4 grid-cols-2">
                     <div>
-                        <p>Upload Employment Agreement</p>
+                        <p>Upload Visa Application Proof</p>
                         <div class="flex items-center justify-center w-full">
-                            <label for="employee_agreement" class="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                            <label for="visa_proof" class="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                     <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                     </svg>
-                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Upload Employment Agreement</span></p>
+                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Upload Visa Application Proof</span></p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                 </div>
-                                <input id="employee_agreement" type="file" class="hidden" name="employee_agreement" />
+                                <input id="visa_proof" type="file" class="hidden" name="visa_proof" />
                             </label>
 
                         </div>
-                        <x-input-error :messages="$errors->get('employee_agreement')" class="mt-2" />
-                        <div id="employee_agreement-name-display"></div>
+                        <x-input-error :messages="$errors->get('visa_proof')" class="mt-2" />
+                        <div id="visa_proof-name-display"></div>
                     </div>
 
                     <div>
-                        <p>Upload Terms & Conditions</p>
-                        <div class="flex items-center justify-center w-full">
-                            <label for="termsconditions" class="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                    </svg>
-                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to Upload Terms & Conditions</span></p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                </div>
-                                <input id="termsconditions" type="file" class="hidden" name="termsconditions" />
-                            </label>
+                        <p>Enter Your SC Number Here</p>
 
+                        <div class="sm:col-span-6">
+                            <div class="mt-1">
+                                <input type="text" name="sc" id="sc" autocomplete="given-name" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <x-input-error :messages="$errors->get('sc')" class="mt-2" />
+                            </div>
                         </div>
-                        <x-input-error :messages="$errors->get('termsconditions')" class="mt-2" />
-                        <div id="termsconditions-name-display"></div>
+
                     </div>
 
                 </div>
@@ -117,15 +85,15 @@
 
 
                 <div class="sm:col-span-6 w-2/5 mx-auto mt-10">
-                    <button class="bg-[#FFCC01] w-full sm:w-[32rem] uppercase text-black-50 px-6 sm:px-12 py-2 sm:py-3 rounded-3xl text-sm sm:text-base" type="submit">MAKE DOCUMENTATION PAYMENT AND SUBMITt</button>
+                    <button class="bg-[#FFCC01] w-full sm:w-[32rem] uppercase text-black-50 px-6 sm:px-12 py-2 sm:py-3 rounded-3xl text-sm sm:text-base" type="submit">SUBMIT & COMPLETE THE REGISTRATION PROCESS</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        const fileInput = document.getElementById('employee_agreement');
-        const fileNameDisplay = document.getElementById('employee_agreement-name-display');
+        const fileInput = document.getElementById('visa_proof');
+        const fileNameDisplay = document.getElementById('visa_proof-name-display');
 
         fileInput.addEventListener('change', function() {
             const file = this.files[0];
@@ -136,21 +104,6 @@
             } else {
                 // Clear the display if no file selected
                 fileNameDisplay.textContent = '';
-            }
-        });
-
-        const fileInput1 = document.getElementById('termsconditions');
-        const fileNameDisplay1 = document.getElementById('termsconditions-name-display');
-
-        fileInput1.addEventListener('change', function() {
-            const file1 = this.files[0];
-
-            if (file1) {
-                // Display the file name
-                fileNameDisplay1.textContent = "*****" + file1.name + "*****";
-            } else {
-                // Clear the display if no file selected
-                fileNameDisplay1.textContent = '';
             }
         });
     </script>
@@ -208,4 +161,7 @@
         </div>
         <img src="{{ asset('storage/images/footer.png') }}" alt="">
     </div>
+
+
+
 </x-app-layout>

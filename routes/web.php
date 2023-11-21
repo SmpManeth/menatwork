@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,14 @@ Route::get('/', function () {
         return redirect()->route('step-two');
     }
 
+    
+
     return view('dashboard');
 })->name('dashboard');
 
-
+Route::post('/session', [StripeController::class, 'session'])->name('session');
+Route::post('/session_two', [StripeController::class, 'session_two'])->name('session_two');
+Route::get('/success', [StripeController::class, 'success'])->name('success');
 
 
 Route::middleware('auth')->group(function () {
@@ -43,13 +48,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('step-two', [ApplicationController::class, 'store_step_two'])->name('step-two');
-    Route::post('step-three', [ApplicationController::class, 'store_step_three'])->name('step-three');
+    Route::get('step_three_post', [ApplicationController::class, 'store_step_three'])->name('step_three_post');
     Route::post('upload-epmloyeeagreement', [ApplicationController::class, 'epmloyeeagreement'])->name('upload-epmloyeeagreement');
     Route::post('/stepfour', [ApplicationController::class, 'store_step_four'])->name('stepfour');
     Route::get('/stepfour', [ApplicationController::class, 'show_step_four'])->name('stepfour');
   Route::get('/step-two', function () {
         return view('steptwo');
     })->name('steptwo');
+    Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
+    
+
 
 
 });

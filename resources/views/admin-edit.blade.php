@@ -133,7 +133,7 @@
             <div class="sm:w-2/5 md:w-1/5 mx-auto">
                 <div class="grid grid-cols-5 gap-1 pt-4 sm:pt-8">
                     <div>
-                        <img src="{{ asset('storage/images/facebook_mono.png') }}" alt="Facebook">
+                        <img src="{{ ('storage/images/facebook_mono.png') }}" alt="Facebook">
                     </div>
                     <div>
                         <img src="{{ asset('storage/images/instagram_mono.png') }}" alt="Instagram">

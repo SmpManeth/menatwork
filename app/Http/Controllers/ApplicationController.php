@@ -36,9 +36,9 @@ class ApplicationController extends Controller
         ]);
 
         // Store the images
-        $employee_agreement_user = $request->file('employee_agreement_user')->store('public/images');
-        $workpormit = $request->file('workpormit')->store('public/images');
-        $termsandcondition_user = $request->file('termsandcondition_user')->store('public/images');
+        $employee_agreement_user = $request->file('employee_agreement_user')->store('public/upload_images');
+        $workpormit = $request->file('workpormit')->store('public/upload_images');
+        $termsandcondition_user = $request->file('termsandcondition_user')->store('public/upload_images');
 
         $user = User::find($request->id);
         $user->update([
@@ -65,7 +65,7 @@ class ApplicationController extends Controller
         ]);
 
         // Store the images
-        $epmloyeeagreement = $request->file('epmloyeeagreement')->store('public/images');
+        $epmloyeeagreement = $request->file('epmloyeeagreement')->store('public/upload_images');
 
 
 
@@ -117,24 +117,18 @@ class ApplicationController extends Controller
         //
     }
 
-    public function store_step_three(Request $request)
+    public function store_step_three()
     {
 
-        $request->validate([
-            'employee_agreement' => 'required|max:2048', // Max file size of 2MB
-            'termsconditions' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
-        ]);
-
-        // Store the images
-        $employee_agreement = $request->file('employee_agreement')->store('public/images');
-        $termsconditions = $request->file('termsconditions')->store('public/images');
+        $dataToPass = request()->getQueryString();
+        parse_str($dataToPass, $request);
 
 
-        $user = $request->user(); // Get the authenticated user
-        $user->update([
-            'employee_agreement' => $employee_agreement,
-            'tc' => $termsconditions,
-        ]);
+        $user = Auth::user();
+        // Update the user's fields
+        $user->employee_agreement = $request['employee_agreement'];
+        $user->tc = $request['termsconditions'];
+        $user->save();
 
         return redirect()->route('stepfour')->with(['user' => $user]);
         // return view('/stepfour', ['user' => $user]);
@@ -149,7 +143,7 @@ class ApplicationController extends Controller
         ]);
 
         // Store the images
-        $visa_proof = $request->file('visa_proof')->store('public/images');
+        $visa_proof = $request->file('visa_proof')->store('public/upload_images');
 
 
         $user = $request->user(); // Get the authenticated user
@@ -158,7 +152,9 @@ class ApplicationController extends Controller
             'sc' => $request->sc,
         ]);
 
-        return view('stepfour')->with('user', $user);
+        return redirect()->away('https://www.menatwork.com.ro');
+
+       // return view('stepfour')->with('user', $user);
     }
 
 
@@ -173,10 +169,10 @@ class ApplicationController extends Controller
         ]);
 
         // Store the images
-        $photoPath = $request->file('photo')->store('public/images');
-        $passportCopyPath = $request->file('passport_copy')->store('public/images');
-        $policeReportPath = $request->file('police_report')->store('public/images');
-        $cvPath = $request->file('CV')->store('public/images');
+        $photoPath = $request->file('photo')->store('public/upload_images');
+        $passportCopyPath = $request->file('passport_copy')->store('public/upload_images');
+        $policeReportPath = $request->file('police_report')->store('public/upload_images');
+        $cvPath = $request->file('CV')->store('public/upload_images');
 
         $user = $request->user(); // Get the authenticated user
         $user->update([
