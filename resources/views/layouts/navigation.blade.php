@@ -12,11 +12,16 @@ $sesuser = session('user');
             <img src="https://www.menatwork.com.ro/wp-content/uploads/2023/10/New-Logo.png" style="height: 105px;" class="h-[105px]" alt="" />
         </a>
         <div class="flex items-center md:order-2">
+            @if (auth()->check())
+            <p class="text-[#FFCC01] my-auto mr-3 ">You are Logged in</p>
+            @endif
             <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+
                 <span class="sr-only">Open user menu</span>
                 @if (auth()->check())
                 <!-- User is authenticated -->
-                <img class="w-8 h-8 rounded-full" src="{{ Storage::url(auth()->user()->photo_path) }}" alt="user photo">
+
+                <img class="w-8 h-8 rounded-full" src="https://th.bing.com/th/id/OIP.8we_VnkatphHL1dEHB8U-wHaJA?rs=1&pid=ImgDetMain" alt="user photo">
                 @else
                 <!-- User is not authenticated -->
                 <!-- <img class="w-8 h-8 rounded-full" src="https://www.menatwork.com.ro/wp-content/uploads/2023/10/New-Logo.png" alt="user photo"> -->
@@ -39,7 +44,7 @@ $sesuser = session('user');
                         @endif</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
-                    
+
                     @auth
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
@@ -70,7 +75,7 @@ $sesuser = session('user');
                     <a href="https://www.menatwork.com.ro/local-agent/" class="block py-2 pl-3 font-extrabold pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">LOCAL AGENT</a>
                 </li>
                 <li class="mr-[2.8rem]">
-                <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white font-extrabold rounded md:bg-transparent -700 md:p-0 " aria-current="page">CONTACT US</a>
+                    <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white font-extrabold rounded md:bg-transparent -700 md:p-0 " aria-current="page">CONTACT US</a>
                 </li>
             </ul>
         </div>

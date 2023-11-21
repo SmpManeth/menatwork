@@ -74,11 +74,11 @@
                 </div>
                 <br><br>
                 <p class="font-bold">Upload Sri Lanka Police Clearance Report</p>
-                <p class="text-[#D4A900] font-medium pb-3">If you have not obtained the Police Clearance Report so far, please apply it online right now. Then take a screenshot with the Apply Reference 
-Number' and upload it here.</p>
+                <p class="text-[#D4A900] font-medium pb-3">If you have not obtained the Police Clearance Report so far, please apply it online right now. Then take a screenshot with the Apply Reference
+                    Number' and upload it here.</p>
                 <div class="grid gap-4 grid-cols-2">
                     <div class="bg-[black] h-12 inline-block flex items-center">
-                     <a href="https://www.police.lk/?page_id=3275" class="text-[#FFCC01] mx-auto w-fit  ">https://www.police.lk/?page_id=3275</a>
+                        <a href="https://www.police.lk/?page_id=3275" target="_blank" class="text-[#FFCC01] mx-auto w-fit  ">https://www.police.lk/?page_id=3275</a>
                     </div>
 
                     <div>
@@ -86,7 +86,7 @@ Number' and upload it here.</p>
                         <div class="flex items-center justify-center w-full">
                             <label for="police_report" class="flex flex-col items-center justify-center w-full h-12 border-2 border-gray-300  cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                 <div class="flex flex-col items-center justify-center pt-4 pb-4">
-                                    <p class="text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to</span> UPLOAD THE SCREENSHOT</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">CLICK TO</span> UPLOAD THE SCREENSHOT</p>
                                 </div>
                                 <input id="police_report" type="file" class="hidden" name="police_report" />
                             </label>
@@ -101,7 +101,7 @@ Number' and upload it here.</p>
                 <br>
                 <p class="text-[#D4A900] font-medium pb-3">You need to download the CV Template, fill it & upload here.</p>
                 <div class="grid gap-4 grid-cols-2">
-                    <a href="">
+                    <a href="{{ asset('storage/images/Men At Work CV Template.docx') }}" download>
                         <div class="bg-[black] h-12 inline-block flex items-center">
                             <p class="text-[#FFCC01] mx-auto w-fit  ">DOWNLOAD THE CV FORMAT</p>
                         </div>

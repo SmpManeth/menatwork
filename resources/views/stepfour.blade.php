@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="flex flex-col items-center justify-center">
-                    <img class="py-12 max-h-[600px]" src="{{ asset('storage/images/Sign.png') }}" alt="">
+                    <img class="py-12 max-h-[500px]" src="{{ asset('storage/images/Sign.png') }}" alt="">
                 </div>
 
                 <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg font-medium pb-3">

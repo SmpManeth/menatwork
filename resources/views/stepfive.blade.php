@@ -46,7 +46,7 @@
             <div>
 
                 <div class="bg-[black] h-12 inline-block flex items-center">
-                    <p class="text-[#FFCC01] mx-auto w-fit  ">https://evisa.mae.ro/Home?lang=en-US</p>
+                    <a href="https://evisa.mae.ro/Home?lang=en-US" target="_blank" class="text-[#FFCC01] mx-auto w-fit  ">https://evisa.mae.ro/Home?lang=en-US</a>
                 </div>
             </div>
             <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
@@ -56,7 +56,7 @@
             <form action="{{ route('stepfive') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <div class="grid gap-4 grid-cols-2">
+                <div class="grid gap-4">
                     <div>
                         <p>Upload Visa Application Proof</p>
                         <div class="flex items-center justify-center w-full">
@@ -91,7 +91,7 @@
 
             <div>
                 <div class="bg-[black] h-12 inline-block flex items-center">
-                    <a href="https://tripsy.lk/" class="text-[#FFCC01] mx-auto w-fit">Purchase Flight Ticket</a>
+                    <a href="https://tripsy.lk/" target="_blank" class="text-[#FFCC01] mx-auto w-fit">Purchase Flight Ticket</a>
                 </div>
             </div>
         </div>

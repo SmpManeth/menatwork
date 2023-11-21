@@ -114,7 +114,7 @@
                 </div>
                 <br><br> -->
 
-                @if($user->status != "process")
+                @if($user->status != "pending")
                 <div class="sm:col-span-6 w-2/5 mx-auto mt-10">
                     <button class="bg-[#FFCC01] w-full sm:w-[32rem] uppercase text-black-50 px-6 sm:px-12 py-2 sm:py-3 rounded-3xl text-sm sm:text-base" type="submit">YOU ARE SELECTED. PROCEED TO THE NEXT STEP</button>
                 </div>
