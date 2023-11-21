@@ -38,7 +38,7 @@
                         <p class="font-medium">Upload Your Passport, Colour Scanned Copy (jpg or pdf)</p>
 
                         <div class="flex flex-col items-center justify-center border-black-100 border-2 rounded">
-                            <img class="py-2 max-h-[300px]" src="{{ asset('storage/images/Passport.jpg') }}" alt="">
+                            <img style="max-height: 300px;" class="py-2 max-h-[300px]" src="{{ asset('storage/images/Passport.jpg') }}" alt="">
                         </div>
                         <div class="flex items-center justify-center w-full">
                             <label for="passport_copy" class="flex flex-col items-center justify-center w-full h-12 border-2 border-gray-300  cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -56,7 +56,7 @@
                     <div>
                         <p class="font-medium">Upload Passport Size Colour Photo of You</p>
                         <div class="flex flex-col items-center justify-center border-black-100 border-2 rounded">
-                            <img class="py-2 max-h-[300px]" src="{{ asset('storage/images/Passport Photo.jpg') }}" alt="">
+                            <img style="max-height: 300px;" class="py-2 max-h-[300px]" src="{{ asset('storage/images/Passport Photo.jpg') }}" alt="">
                         </div>
                         <div class="flex items-center justify-center w-full">
                             <label for="photo" class="flex flex-col items-center justify-center w-full h-12 border-2 border-gray-300  cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">

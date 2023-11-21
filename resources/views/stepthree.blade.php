@@ -48,7 +48,7 @@
 
             </div>
             <div class="flex flex-col items-center justify-center">
-                <img class="py-12 max-h-[600px]" src="{{ asset('storage/images/Whatsapp Interview.png') }}" alt="">
+                <img style="max-height: 500px;" class="py-12 max-h-[600px]" src="{{ asset('storage/images/Whatsapp Interview.png') }}" alt="">
             </div>
 
             <!-- <div class="grid gap-4 grid-cols-2">

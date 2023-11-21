@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Stripe\Checkout\Session;
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -46,7 +48,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
         $user = Auth::user();
         session(['user' => $user]);
-       // Mail::to($user->email)->send(new RegistrationSuccessfulEmail($user));
+        Mail::to($user->email)->send(new WelcomeEmail($user));
 
         return view('steptwo');
     }

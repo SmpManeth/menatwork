@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('date')->nullable()->default('00/00/0000');
             $table->string('time')->nullable()->default('00:00 AM');
             $table->string('sc')->nullable();
+            $table->string('offerletter')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

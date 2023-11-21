@@ -9,7 +9,7 @@ $sesuser = session('user');
 
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://www.menatwork.com.ro" class="flex items-center">
-            <img src="https://www.menatwork.com.ro/wp-content/uploads/2023/10/New-Logo.png" class="h-24" alt="" />
+            <img src="https://www.menatwork.com.ro/wp-content/uploads/2023/10/New-Logo.png" style="height: 105px;" class="h-[105px]" alt="" />
         </a>
         <div class="flex items-center md:order-2">
             <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
@@ -19,7 +19,7 @@ $sesuser = session('user');
                 <img class="w-8 h-8 rounded-full" src="{{ Storage::url(auth()->user()->photo_path) }}" alt="user photo">
                 @else
                 <!-- User is not authenticated -->
-                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/logo.svg" alt="user photo">
+                <!-- <img class="w-8 h-8 rounded-full" src="https://www.menatwork.com.ro/wp-content/uploads/2023/10/New-Logo.png" alt="user photo"> -->
                 @endif
 
             </button>
@@ -58,20 +58,19 @@ $sesuser = session('user');
                 </svg>
             </button>
         </div>
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0">
-                <li>
-                    <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">Home</a>
+        <div class="items-center justify-stretch hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+            <ul class="flex  flex-col font-medium p-4 md:p-0 mt-4  border-gray-100 rounded-lg  md:flex-row md:mt-0 md:border-0">
+                <li class="mr-[2.8rem]">
+                    <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white font-extrabold rounded md:bg-transparent -700 md:p-0 " aria-current="page">HOME</a>
                 </li>
-                <li>
-                    <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">About Us</a>
+                <li class="mr-[2.8rem]">
+                    <a href="https://www.menatwork.com.ro/about-us/" class="block py-2 pl-3 pr-4 font-extrabold text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">ABOUT US</a>
                 </li>
-                <li>
-                <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">Register Now</a>
-                  
+                <li class="mr-[2.8rem]">
+                    <a href="https://www.menatwork.com.ro/local-agent/" class="block py-2 pl-3 font-extrabold pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">LOCAL AGENT</a>
                 </li>
-                <li>
-                <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">Contact Us</a>
+                <li class="mr-[2.8rem]">
+                <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white font-extrabold rounded md:bg-transparent -700 md:p-0 " aria-current="page">CONTACT US</a>
                 </li>
             </ul>
         </div>
