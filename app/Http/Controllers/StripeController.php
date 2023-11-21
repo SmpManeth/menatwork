@@ -27,48 +27,49 @@ class StripeController extends Controller
             'whatsapp_number' => $request->whatsapp_number,
         ]);
 
-        $productname ="Registration payment";
+        $productname = "Registration payment";
         $totalprice = 30;
-        
+
         $two = "00";
         $totalprice = "$totalprice$two";
-        
+
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
-       
+
         $session = \Stripe\Checkout\Session::create([
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'USD',
+                        'currency' => 'EUR',
                         'product_data' => [
                             "name" => $productname,
                         ],
-                        'unit_amount'=> $totalprice,
+                        'unit_amount' => $totalprice,
                     ],
-                    'quantity'=> 1,
+                    'quantity' => 1,
                 ],
             ],
-            'mode'=> 'payment',
+            'mode' => 'payment',
             'success_url' => route('register_new') . '?' . $dataToPass,
             'cancel_url' => route('dashboard'),
         ]);
 
-      
+
         return redirect()->away($session->url);
     }
 
     public static function session_two(Request $request)
     {
-
+       
         $request->validate([
             'employee_agreement' => 'required|max:2048', // Max file size of 2MB
-            'termsconditions' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
+            // 'termsconditions' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
         ]);
+       
         $employee_agreement = $request->file('employee_agreement')->store('public/upload_images');
-        $termsconditions = $request->file('termsconditions')->store('public/upload_images');
+       // $termsconditions = $request->file('termsconditions')->store('public/upload_images');
         $dataToPass = http_build_query([
             'employee_agreement' => $employee_agreement,
-            'termsconditions' => $termsconditions,
+            //'termsconditions' => $termsconditions,
         ]);
 
         $productname = "Documentation payment";
@@ -83,7 +84,7 @@ class StripeController extends Controller
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'USD',
+                        'currency' => 'EUR',
                         'product_data' => [
                             "name" => $productname,
                         ],
@@ -93,14 +94,14 @@ class StripeController extends Controller
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => route('step_three_post') . '?' . $dataToPass,
+            'success_url' => route('stepfour_post') . '?' . $dataToPass,
             'cancel_url' => route('dashboard'),
         ]);
 
 
         return redirect()->away($session->url);
     }
-    public function success(){
-       
+    public function success()
+    {
     }
 }

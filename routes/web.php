@@ -36,12 +36,17 @@ Route::get('/success', [StripeController::class, 'success'])->name('success');
 Route::middleware('auth')->group(function () {
   
 
-    Route::get('/admin', function () {
-        return view('admin');
-    })->name('admin');
+  
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin', function () {
+            return view('admin');
+        })->name('admin');
+        Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+        Route::post('/update_user', [ApplicationController::class, 'update_user'])->name('update_user');
+        Route::get('/admin', [ApplicationController::class, 'show_users'])->name('admin');
+    });
 
-    Route::post('/update_user', [ApplicationController::class, 'update_user'])->name('update_user');
-    Route::get('/admin', [ApplicationController::class, 'show_users'])->name('admin');
+   
     Route::get('/step-three', [ApplicationController::class, 'show_step_three'])->name('stepthree');
     Route::get('/admin/users/{id}/edit', [ApplicationController::class, 'edit_user'])->name('admin_edit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -50,8 +55,11 @@ Route::middleware('auth')->group(function () {
     Route::post('step-two', [ApplicationController::class, 'store_step_two'])->name('step-two');
     Route::get('step_three_post', [ApplicationController::class, 'store_step_three'])->name('step_three_post');
     Route::post('upload-epmloyeeagreement', [ApplicationController::class, 'epmloyeeagreement'])->name('upload-epmloyeeagreement');
-    Route::post('/stepfour', [ApplicationController::class, 'store_step_four'])->name('stepfour');
+    Route::get('/stepfour_post', [ApplicationController::class, 'store_step_four'])->name('stepfour_post');
     Route::get('/stepfour', [ApplicationController::class, 'show_step_four'])->name('stepfour');
+    Route::get('/stepfive', [ApplicationController::class, 'show_stepfive'])->name('stepfive');
+    Route::post('/stepfive', [ApplicationController::class, 'store_step_five'])->name('stepfive');
+
   Route::get('/step-two', function () {
         return view('steptwo');
     })->name('steptwo');

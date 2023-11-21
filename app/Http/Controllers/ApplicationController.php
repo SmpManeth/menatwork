@@ -31,6 +31,7 @@ class ApplicationController extends Controller
     {
         $request->validate([
             'employee_agreement_user' => 'required|max:2048', // Max file size of 2MB
+            'offerletter' => 'required|max:2048', // Max file size of 2MB
             'workpormit' => 'required|max:2048', // Max file size of 2MB
             'termsandcondition_user' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
         ]);
@@ -38,6 +39,7 @@ class ApplicationController extends Controller
         // Store the images
         $employee_agreement_user = $request->file('employee_agreement_user')->store('public/upload_images');
         $workpormit = $request->file('workpormit')->store('public/upload_images');
+        $offerletter = $request->file('offerletter')->store('public/upload_images');
         $termsandcondition_user = $request->file('termsandcondition_user')->store('public/upload_images');
 
         $user = User::find($request->id);
@@ -46,8 +48,9 @@ class ApplicationController extends Controller
             'workpormit' => $workpormit,
             'termsandcondition_user' => $termsandcondition_user,
             'status' => $request->status,
-            'date' => $request->date, 
+            'date' => $request->date,
             'time' => $request->time,
+            'offerletter' => $offerletter,
         ]);
 
 
@@ -98,16 +101,26 @@ class ApplicationController extends Controller
         return view('admin', ['users' => $users]);
     }
 
-    public function show_step_four(Request $request){
+    public function show_step_four(Request $request)
+    {
         $user = $request->user(); // Get the authenticated user
 
         return view('/stepfour', ['user' => $user]); // Red
     }
-    public function show_step_three(Request $request){
+    public function show_step_three(Request $request)
+    {
         // Find the user by ID
         $user = $request->user(); // Get the authenticated user
 
         return view('/stepthree', ['user' => $user]); // Red
+    }
+
+    public function show_stepfive(Request $request)
+    {
+        // Find the user by ID
+        $user = $request->user(); // Get the authenticated user
+
+        return view('/stepfive', ['user' => $user]); // Red
     }
     /**
      * Show the form for creating a new resource.
@@ -120,15 +133,15 @@ class ApplicationController extends Controller
     public function store_step_three()
     {
 
-        $dataToPass = request()->getQueryString();
-        parse_str($dataToPass, $request);
+        //  $dataToPass = request()->getQueryString();
+        //  parse_str($dataToPass, $request);
 
 
         $user = Auth::user();
         // Update the user's fields
-        $user->employee_agreement = $request['employee_agreement'];
-        $user->tc = $request['termsconditions'];
-        $user->save();
+        // $user->employee_agreement = $request['employee_agreement'];
+        // $user->tc = $request['termsconditions'];
+        //  $user->save();
 
         return redirect()->route('stepfour')->with(['user' => $user]);
         // return view('/stepfour', ['user' => $user]);
@@ -136,25 +149,62 @@ class ApplicationController extends Controller
 
     public function store_step_four(Request $request)
     {
-
-        $request->validate([
-            'sc' => 'required', // Max file size of 2MB
-            'visa_proof' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
-        ]);
-
-        // Store the images
-        $visa_proof = $request->file('visa_proof')->store('public/upload_images');
+        $dataToPass = request()->getQueryString();
+          parse_str($dataToPass, $request);
 
 
-        $user = $request->user(); // Get the authenticated user
-        $user->update([
-            'visa_proof' => $visa_proof,
-            'sc' => $request->sc,
-        ]);
+        $user = Auth::user();
+        // Update the user's fields
+         $user->employee_agreement = $request['employee_agreement'];
+        // $user->tc = $request['termsconditions'];
+      $user->save();
+      return redirect()->route('stepfive')->with(['user' => $user]);
+
+        // $request->validate([
+        //     'sc' => 'required', // Max file size of 2MB
+        //     'visa_proof' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
+        // ]);
+
+        // // Store the images
+        // $visa_proof = $request->file('visa_proof')->store('public/upload_images');
+
+
+        // $user = $request->user(); // Get the authenticated user
+        // $user->update([
+        //     'visa_proof' => $visa_proof,
+        //     'sc' => $request->sc,
+        // ]);
+
+       // return redirect()->away('https://www.menatwork.com.ro');
+
+        // return view('stepfour')->with('user', $user);
+    }
+
+    public function store_step_five(Request $request)
+    {
+        $user = Auth::user();
+        // Update the user's fields
+        //$user->employee_agreement = $request['employee_agreement'];
+        // $user->tc = $request['termsconditions'];
+     // $user->save();
+     // return redirect()->route('stepfive')->with(['user' => $user]);
+
+         $request->validate([
+             'visa_proof' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
+         ]);
+
+         // Store the images
+         $visa_proof = $request->file('visa_proof')->store('public/upload_images');
+
+
+         $user = $request->user(); // Get the authenticated user
+         $user->update([
+             'visa_proof' => $visa_proof,
+         ]);
 
         return redirect()->away('https://www.menatwork.com.ro');
 
-       // return view('stepfour')->with('user', $user);
+        // return view('stepfour')->with('user', $user);
     }
 
 
@@ -185,7 +235,6 @@ class ApplicationController extends Controller
 
 
         return redirect()->route('stepthree')->with(['user' => $user]);
-
     }
     /**
      * Store a newly created resource in storage.

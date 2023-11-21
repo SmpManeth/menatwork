@@ -79,14 +79,21 @@
                 </div>
 
                 <div class="sm:col-span-6">
+                    <label for="offerletter" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Upload offerletter</label>
+                    <div class="mt-1">
+                        <input id="offerletter" name="offerletter" type="file" autocomplete="offerletter" class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <x-input-error :messages="$errors->get('offerletter')" class="mt-2" />
+                    </div>
+                </div>
+
+                <div class="sm:col-span-6">
                     <label for="status" class="block text-sm sm:text-base font-medium leading-6 text-gray-900">Change Status</label>
                     <div class="mt-1">
                         <select name="status" id="">
-                            <Option value="complete">Completed</Option>
-                            <Option value="pending">Pendin</Option>
+                            <Option value="selected">Completed</Option>
+                            <Option value="interview">Interview</Option>
                             <Option value="reject">Rejected</Option>
                         </select>
-
                     </div>
                 </div>
 

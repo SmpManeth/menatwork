@@ -195,10 +195,12 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    @if ($user->status === 'complete')
+                                    @if ($user->status === 'selected')
                                     <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>Completed
-                                    @elseif ($user->status === 'pending')
-                                    <div class="h-2.5 w-2.5 rounded-full bg-yellow-500 mr-2"></div> Pending
+                                    @elseif ($user->status === 'interview')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-yellow-500 mr-2"></div> Interview
+                                    @elseif ($user->status === 'process')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-yellow-500 mr-2"></div> Process
                                     @elseif ($user->status === 'reject')
                                     <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Rejected
                                     <!-- Handle other status values if needed -->

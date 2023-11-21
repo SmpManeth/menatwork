@@ -67,10 +67,11 @@ $sesuser = session('user');
                     <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">About Us</a>
                 </li>
                 <li>
-                    <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">Contact Us</a>
+                <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">Register Now</a>
+                  
                 </li>
                 <li>
-                    <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">Register Now</a>
+                <a href="https://www.menatwork.com.ro/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent -700 md:p-0 " aria-current="page">Contact Us</a>
                 </li>
             </ul>
         </div>

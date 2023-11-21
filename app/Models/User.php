@@ -37,6 +37,7 @@ class User extends Authenticatable
         'employee_agreement_user',
         'termsandcondition_user',
         'workpormit',
+        'offerletter',
 
 
 
