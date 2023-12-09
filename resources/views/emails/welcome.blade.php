@@ -2,7 +2,10 @@
 
 <p>Dear {{ $user->name }},</p>
 
-<p>Welcome to our website! Your account has been successfully created with the following details:</p>
+<p>Welcome to MenATWork - Your Golden Opportunity to make a better life with a secure job in Romania. <br>
+
+    Let's get started. Your account has been successfully created with the following logins:
+</p>
 
 <ul>
     <li>Email: {{ $user->email }}</li>
@@ -10,4 +13,7 @@
     <li>WhatsApp Number: {{ $user->whatsapp_number }}</li>
 </ul>
 
-<p>Thank you for joining us!</p>
+<p>Please keep this saved in somewhere safe. <br>
+    Thank you for joining us! <br><br><br>
+
+    - Team MenAtWork -</p>

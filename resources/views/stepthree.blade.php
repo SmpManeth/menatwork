@@ -22,7 +22,13 @@
                 <div>
                     <p class="font-bold text-2xl"> Application Status</p>
                     <div class="bg-[#FFCC01] h-12 inline-block flex items-center">
-                        <p class="text-[black] mx-auto w-fit  ">Your Application in the {{$user->status}} Status</p>
+                        @if($user->status == 'selected')
+                        <p class="text-[black] mx-auto w-fit  ">Your are Selected</p>
+                        @elseif($user->status == 'Interview')
+                        <p class="text-[black] mx-auto w-fit  ">WhatsApp Interview Scheduled for You</p>
+                        @elseif($user->status == 'process')
+                        <p class="text-[black] mx-auto w-fit  ">You Application is Processing</p>
+                        @endif
                     </div>
                 </div>
 
@@ -33,13 +39,18 @@
                         <div>
 
                             <div class="bg-[black] h-12 inline-block flex items-center">
+                                @if($user->status != 'selected')
                                 <p class="text-[#FFCC01] mx-auto w-fit  ">{{$user->date}}</p>
+                                @endif
+
                             </div>
                         </div>
                         <div>
 
                             <div class="bg-[black] h-12 inline-block flex items-center">
+                                @if($user->status != 'selected')
                                 <p class="text-[#FFCC01] mx-auto w-fit  ">{{$user->time}}</p>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,7 @@ class ApplicationController extends Controller
     {
         // Find the user by ID
         $user = User::find($id);
+        $user->time = date('H:i:s', strtotime($user->time));
 
         return view('admin-edit', ['user' => $user]);
     }
@@ -242,7 +243,7 @@ class ApplicationController extends Controller
             'passport_copy_path' => $passportCopyPath,
             'police_report_path' => $policeReportPath,
             'cv_path' => $cvPath,
-            'status' => "pending"
+            'status' => "process"
         ]);
 
 
