@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (auth()->check() && auth()->user()->user_type === "Admin") {
+    if (auth()->check() && auth()->user()->user_type === "admin") {
         return redirect()->route('admin');
     } else if (auth()->check()) {
         return redirect()->route('step-two');
