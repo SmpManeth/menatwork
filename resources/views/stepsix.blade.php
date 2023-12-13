@@ -10,53 +10,65 @@
         <div class="py-4 sm:py-6 md:py-8 border-round">
             <div class="bg-[#FFCC01] inline-block flex items-center rounded-2xl p-2 sm:p-4 md:p-6 mt-4 sm:mt-8">
                 <img src="{{ asset('storage/images/information-button.png') }}" class="w-8 sm:w-10 ps-2" alt="information button">
-                <span class="ps-3 sm:ps-5 font-bold text-sm sm:text-xl">STEP 05 - Download the Work Permit and Make the Processing & Administration Payment</span>
+                <span class="ps-3 sm:ps-5 font-bold text-sm sm:text-xl">STEP 06 (Final Step) - Get the Employee/Employer Agreement and Apply for the Visa</span>
             </div>
 
-            <p class="py-2 flex sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
-                Once your work permit issued, we will upload the proof pf the work permit here. Stay in touch
+            <p class="py-2 flex sm:py-4 md:py-6 text-sm sm:text-base md:text-lg font-bold">
+                Now you are in the last stage.<br>
+                Please download your Employee/Employer Agreement, sign and scan it, and upload here to finalize
+                the application process. Once it done, please follow the instruction to Apply for your Visa
             </p>
 
 
-            <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg font-bold">
-                Proof of Your Work Permit
-            </p>
 
-            <!-- <iframe class="m-3 p-3" src="{{ Storage::url($user->workpormit) }}" width="100%" height="500px"></iframe> -->
-            <iframe class="m-3 p-3" src="{{ asset('storage/images/Romania-Work-Permit12.jpg') }}" width="100%" height="500px"></iframe>
-
-            <div class="w-2/5 mx-auto">
-                <a href="{{ Storage::url($user->workpormit) }}" download>
-                    <div class="bg-[black] h-12 inline-block flex items-center">
-                        <p class="text-[#FFCC01] mx-auto w-fit  ">Download Your Work Permit</p>
-                    </div>
-                </a>
-            </div>
-
-
-            <!-- <p class="pt-2 sm:pt-4 md:pt-6 text-sm sm:text-base md:text-lg">
-                Apply Your Visa Online
-            </p>
-
-            <p class=" pb-6 text-sm sm:text-base md:text-lg">
-                - You need to apply for your Visa now. Click below link too apply online.<br>
-                - Read all the information carefully before apply.<br>
-                - If you need any support or assistance, please send an email to apply.visa@menatwork.com.ro
-            </p>
-            <div>
-
-                <div class="bg-[black] h-12 inline-block flex items-center">
-                    <a href="https://evisa.mae.ro/Home?lang=en-US" target="_blank" class="text-[#FFCC01] mx-auto w-fit  ">https://evisa.mae.ro/Home?lang=en-US</a>
-                </div>
-            </div>
-            <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
-                Once you apply for Visa, get a screenshot of your Visa Application and upload below.
-            </p> -->
-
-            <form action="{{ route('session_three') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('stepfive') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <div>
+                    <a href="{{ Storage::url($user->employee_agreement_user) }}" download>
+                        <div class="bg-[black] h-12 inline-block flex items-center">
+                            <p class="text-[#FFCC01] mx-auto w-fit  ">Download Employment Agreement</p>
+                        </div>
+                    </a>
+                </div>
 
-                <!-- <div class="grid gap-4">
+                <div>
+                    <p>Upload Employment Agreement</p>
+                    <div class="flex items-center justify-center w-full">
+                        <label for="employee_agreement" class="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                </svg>
+                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Upload Employment Agreement</span></p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                            </div>
+                            <input id="employee_agreement" type="file" class="hidden" name="employee_agreement" />
+                        </label>
+
+                    </div>
+                    <x-input-error :messages="$errors->get('employee_agreement')" class="mt-2" />
+                    <div id="employee_agreement-name-display"></div>
+                </div>
+                <p class="pt-2 sm:pt-4 md:pt-6 text-sm sm:text-base md:text-lg">
+                    Apply Your Visa Online
+                </p>
+
+                <p class=" pb-6 text-sm sm:text-base md:text-lg">
+                    - You need to apply for your Visa now. Click below link too apply online.<br>
+                    - Read all the information carefully before apply.<br>
+                    - If you need any support or assistance, please send an email to apply.visa@menatwork.com.ro
+                </p>
+                <div>
+
+                    <div class="bg-[black] h-12 inline-block flex items-center">
+                        <a href="https://evisa.mae.ro/Home?lang=en-US" target="_blank" class="text-[#FFCC01] mx-auto w-fit  ">https://evisa.mae.ro/Home?lang=en-US</a>
+                    </div>
+                </div>
+                <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
+                    Once you apply for Visa, get a screenshot of your Visa Application and upload below.
+                </p>
+
+                <div class="grid gap-4">
                     <div>
                         <p>Upload Visa Application Proof</p>
                         <div class="flex items-center justify-center w-full">
@@ -76,16 +88,15 @@
                         <div id="visa_proof-name-display"></div>
                     </div>
                 </div>
-                <br><br> -->
+                <br><br>
 
 
                 <div class="sm:col-span-5 w-3/5 mx-auto mt-10">
-                    <button class="bg-[#FFCC01] w-full sm:w-[40rem] uppercase text-black-50 px-6 sm:px-12 py-2 sm:py-3 rounded-3xl text-sm sm:text-base" type="submit">Make the Payment of Euro 2200 as the Processing & Administration Charges &
-                        Download Employee/Employer Agreement in the Next Step</button>
+                    <button class="bg-[#FFCC01] w-full sm:w-[40rem] uppercase text-black-50 px-6 sm:px-12 py-2 sm:py-3 rounded-3xl text-sm sm:text-base" type="submit">SUBMIT & COMPLETE THE REGISTRATION PROCESS</button>
                 </div>
             </form>
 
-            <!-- <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
+            <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg">
                 Purchase Your Flight Ticket to Romania
 
             </p>
@@ -94,7 +105,7 @@
                 <div class="bg-[black] h-12 inline-block flex items-center">
                     <a href="https://tripsy.lk/" target="_blank" class="text-[#FFCC01] mx-auto w-fit">Purchase Flight Ticket</a>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 
@@ -111,6 +122,21 @@
             } else {
                 // Clear the display if no file selected
                 fileNameDisplay.textContent = '';
+            }
+        });
+   
+        const fileInput1 = document.getElementById('employee_agreement');
+        const fileNameDisplay1 = document.getElementById('employee_agreement-name-display');
+
+        fileInput1.addEventListener('change', function() {
+            const file1 = this.files[0];
+
+            if (file1) {
+                // Display the file name
+                fileNameDisplay1.textContent = "*****" + file1.name + "*****";
+            } else {
+                // Clear the display if no file selected
+                fileNameDisplay1.textContent = '';
             }
         });
     </script>

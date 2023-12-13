@@ -10,8 +10,12 @@
         <div class="bg-[#FFCC01] items-center rounded-2xl p-2 sm:p-4 md:p-6 sm:mt-8 ">
             <div class="ps-3 sm:ps-5 font-black text-sm sm:text-xl">Your Total Cost to Reach Your Dream</div>
             <div class="ml-3 mt-2">
-                <div class="ps-3 sm:ps-5 text-s font-medium">1. Word Permit - Euro 555 <br>
-                    2. Processing & Administration Charges - Euro 1200</div>
+                <div class="ps-3 sm:ps-5 text-s font-medium">1. Word Permit - Euro 555 - You have to upload the documents then we will call to your WhatsApp number for an interview.. Once you
+                    qualified from the interview only you have to pay Euro 555. It will 30-60 days to obtain your work permit.</div>
+                <br>
+                <div class="ps-3 sm:ps-5 text-s font-medium">2. Processing & Administration Charges - Euro 2200 - Once you have the work permit, then you have to make a payment of Euro 2200 as the
+                    processing and administration charge, prior to apply online Visa via designated Romanian Mission.</div>
+                    <br>
                 <div class="ps-3 sm:ps-5 text-s font-medium mt-2">Note: <br>
                     - The Visa Fee (Euro 135) you have to pay separately to the Romanian Embassy. <br>
                     - Flight Ticket to Romania, you need to purchase from given Online Platform in the Final Stage (Step 05) in the Registration Process.
@@ -56,7 +60,7 @@
                     <div>
                         <p class="font-medium">Upload Passport Size Colour Photo of You</p>
                         <div class="flex flex-col items-center justify-center border-black-100 border-2 rounded">
-                            <img style="max-height: 300px;" class="py-2 max-h-[300px]" src="{{ asset('storage/images/Passport Photo.jpg') }}" alt="">
+                            <img style="max-height: 300px;" class="py-2 max-h-[300px]" src="{{ asset('storage/images/step2.jpeg') }}" alt="">
                         </div>
                         <div class="flex items-center justify-center w-full">
                             <label for="photo" class="flex flex-col items-center justify-center w-full h-12 border-2 border-gray-300  cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">

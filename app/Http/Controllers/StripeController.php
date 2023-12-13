@@ -60,17 +60,17 @@ class StripeController extends Controller
     public static function session_two(Request $request)
     {
        
-        $request->validate([
-            'employee_agreement' => 'required|max:2048', // Max file size of 2MB
-            // 'termsconditions' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
-        ]);
+        // $request->validate([
+        //     //'employee_agreement' => 'required|max:2048', // Max file size of 2MB
+        //     // 'termsconditions' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
+        // ]);
        
-        $employee_agreement = $request->file('employee_agreement')->store('public/upload_images');
+        //$employee_agreement = $request->file('employee_agreement')->store('public/upload_images');
        // $termsconditions = $request->file('termsconditions')->store('public/upload_images');
-        $dataToPass = http_build_query([
-            'employee_agreement' => $employee_agreement,
-            //'termsconditions' => $termsconditions,
-        ]);
+        // $dataToPass = http_build_query([
+        //     'employee_agreement' => $employee_agreement,
+        //     //'termsconditions' => $termsconditions,
+        // ]);
 
         $productname = "Documentation payment";
         $totalprice = 555;
@@ -94,7 +94,52 @@ class StripeController extends Controller
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => route('stepfour_post') . '?' . $dataToPass,
+            'success_url' => route('stepfour_post'),
+            'cancel_url' => route('dashboard'),
+        ]);
+
+
+        return redirect()->away($session->url);
+    }
+
+    public static function session_three(Request $request)
+    {
+       
+        // $request->validate([
+        //     //'employee_agreement' => 'required|max:2048', // Max file size of 2MB
+        //     // 'termsconditions' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
+        // ]);
+       
+        //$employee_agreement = $request->file('employee_agreement')->store('public/upload_images');
+        // $termsconditions = $request->file('termsconditions')->store('public/upload_images');
+        // $dataToPass = http_build_query([
+        //     'employee_agreement' => $employee_agreement,
+        //     //'termsconditions' => $termsconditions,
+        // ]);
+
+        $productname = "Processing & Administration Charges";
+        $totalprice = 2200;
+
+        $two = "00";
+        $totalprice = "$totalprice$two";
+
+        \Stripe\Stripe::setApiKey(config('stripe.sk'));
+
+        $session = \Stripe\Checkout\Session::create([
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'EUR',
+                        'product_data' => [
+                            "name" => $productname,
+                        ],
+                        'unit_amount' => $totalprice,
+                    ],
+                    'quantity' => 1,
+                ],
+            ],
+            'mode' => 'payment',
+            'success_url' => route('stepsix'),
             'cancel_url' => route('dashboard'),
         ]);
 

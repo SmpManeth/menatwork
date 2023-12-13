@@ -14,8 +14,9 @@
             </div>
 
             <p class="py-2 flex sm:py-4 md:py-6 text-sm sm:text-base font-bold items-center justify-center md:text-lg">
-                Congratulations! You are qualified to become a courier rider in Romania for the Contract Period of 2
-                years. You can download your Offer Letter and sign the Employee/Employer Agreement here.
+                Congratulations! <br>
+                You are qualified to become a courier rider in Romania for the Contract Period of 2 years. You can
+                download your Offer Letter, make the Work Permit payment and proceed to the next step.
             </p>
 
             <div class="mx-auto">
@@ -25,7 +26,7 @@
                     </div>
                 </a>
             </div>
-            <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg text-[#D4A900] font-medium pb-3">
+            <!-- <p class="py-2 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg text-[#D4A900] font-medium pb-3">
                 Download the Employee/Employer Agreement, sign, scan and upload it below.
             </p>
 
@@ -35,11 +36,11 @@
                         <p class="text-[#FFCC01] mx-auto w-fit  ">Download Employment Agreement</p>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <form action="{{ route('session_two') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="py-4">
+                <!-- <div class="py-4">
                     <div class="flex items-center justify-center w-full">
                         <div class="flex items-center justify-center w-full">
                             <label for="employee_agreement" class="flex flex-col items-center justify-center w-full h-12 border-2 border-gray-300  cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -53,7 +54,7 @@
                     </div>
                     <x-input-error :messages="$errors->get('employee_agreement')" class="mt-2" />
                     <div id="employee_agreement-name-display"></div>
-                </div>
+                </div> -->
 
                 <div class="flex flex-col items-center justify-center">
                     <img class="py-12 max-h-[500px]" src="{{ asset('storage/images/Sign.png') }}" alt="">

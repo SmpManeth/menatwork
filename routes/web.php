@@ -30,6 +30,7 @@ Route::get('/', function () {
 
 Route::post('/session', [StripeController::class, 'session'])->name('session');
 Route::post('/session_two', [StripeController::class, 'session_two'])->name('session_two');
+Route::post('/session_three', [StripeController::class, 'session_three'])->name('session_three');
 Route::get('/success', [StripeController::class, 'success'])->name('success');
 
 
@@ -59,6 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/stepfour', [ApplicationController::class, 'show_step_four'])->name('stepfour');
     Route::get('/stepfive', [ApplicationController::class, 'show_stepfive'])->name('stepfive');
     Route::post('/stepfive', [ApplicationController::class, 'store_step_five'])->name('stepfive');
+    Route::get('/stepsix', [ApplicationController::class, 'show_stepsix'])->name('stepsix');
 
     Route::get('/step-two', function () {
         return view('steptwo');

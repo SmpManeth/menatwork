@@ -135,6 +135,15 @@ class ApplicationController extends Controller
 
         return view('/stepfive', ['user' => $user]); // Red
     }
+
+    
+    public function show_stepsix(Request $request)
+    {
+        // Find the user by ID
+        $user = $request->user(); // Get the authenticated user
+
+        return view('/stepsix', ['user' => $user]); // Red
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -162,15 +171,15 @@ class ApplicationController extends Controller
 
     public function store_step_four(Request $request)
     {
-        $dataToPass = request()->getQueryString();
-        parse_str($dataToPass, $request);
+        //$dataToPass = request()->getQueryString();
+       // parse_str($dataToPass, $request);
 
 
         $user = Auth::user();
         // Update the user's fields
-        $user->employee_agreement = $request['employee_agreement'];
+       // $user->employee_agreement = $request['employee_agreement'];
         // $user->tc = $request['termsconditions'];
-        $user->save();
+       // $user->save();
         return redirect()->route('stepfive')->with(['user' => $user]);
 
         // $request->validate([
@@ -195,6 +204,7 @@ class ApplicationController extends Controller
 
     public function store_step_five(Request $request)
     {
+      
         $user = Auth::user();
         // Update the user's fields
         //$user->employee_agreement = $request['employee_agreement'];
@@ -203,19 +213,23 @@ class ApplicationController extends Controller
         // return redirect()->route('stepfive')->with(['user' => $user]);
 
         $request->validate([
+            'employee_agreement' => 'required|max:2048', // Max file size of 2MB
             'visa_proof' => 'required|max:2048', // Max file size of 2MB 'photo' => 'required|image|max:2048', // Max file size of 2MB
         ]);
 
         // Store the images
         $visa_proof = $request->file('visa_proof')->store('public/upload_images');
-
+        $epmloyeeagreement = $request->file('employee_agreement')->store('public/upload_images');
 
         $user = $request->user(); // Get the authenticated user
         $user->update([
             'visa_proof' => $visa_proof,
+            'employee_agreement' => $epmloyeeagreement,
         ]);
+     
+      
+       return view('stepsix')->with('user', $user);
 
-        return redirect()->away('https://www.menatwork.com.ro');
 
         // return view('stepfour')->with('user', $user);
     }
